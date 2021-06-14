@@ -4,9 +4,7 @@ import ru.gb.shipHW11.fruit.Apple;
 import ru.gb.shipHW11.fruit.Fruit;
 import ru.gb.shipHW11.fruit.Orange;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Random;
+import java.util.*;
 
 public class Main {
 
@@ -36,30 +34,28 @@ public class Main {
         System.out.println(toArrayList(fruits));
     }
 
-    static ArrayList <Object> toArrayList(Object [] arr){
-        ArrayList <Object> list = new ArrayList<>();
-        Collections.addAll(list, arr);
-        return list;
+    static <T> List<T> toArrayList(T [] arr){
+
+        return Arrays.asList(arr);
+
     }
 
 
 
     public static void doTask3(){
-        Box <Fruit> box1 = new Box<>();
-        Box <Fruit> box2 = new Box<>();
+        Box <Apple> box1 = new Box<>();
+        Box <Orange> box2 = new Box<>();
 
         createFruitBox(box1,'a', getRandomSize(10));
         createFruitBox(box2,'o', getRandomSize(10));
 
-        System.out.println(box1);
-
-        box1.add(new Orange());
+        //box1.addFruit(new Orange());
         System.out.println(box1);
         System.out.println(box2);
         System.out.println(box1.compare(box2));
 
-        Box <Fruit> box3 = new Box<>();
-        Box <Fruit> box4 = new Box<>();
+        Box <Apple> box3 = new Box<>();
+        Box <Orange> box4 = new Box<>();
 
         createFruitBox(box3,'a', 15);
         createFruitBox(box4,'o', 10);
@@ -68,22 +64,22 @@ public class Main {
         System.out.println(box4);
         System.out.println(box3.compare(box4));
 
-        box3.pour(box1);
+        box3.doShoveling(box1);
         System.out.println(box3);
         System.out.println(box1);
 
         Box <Fruit> box5 = new Box<>();
 
-        box2.pour(box5);
+        /*box2.doShoveling(box5);
         System.out.println(box2);
-        System.out.println(box5);
+        System.out.println(box5);*/
 
     }
 
-    public static void createFruitBox(Box <Fruit> box, char f, int size){
+    public static void createFruitBox(Box box, char f, int size){
         for (int i = 0; i < size; i++){
-            if (f == 'a') box.add(new Apple());
-            if (f == 'o') box.add(new Orange());
+            if (f == 'a') box.addFruit(new Apple());
+            if (f == 'o') box.addFruit(new Orange());
         }
     }
 

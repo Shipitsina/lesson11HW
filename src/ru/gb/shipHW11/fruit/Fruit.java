@@ -1,9 +1,13 @@
 package ru.gb.shipHW11.fruit;
 
 public abstract class Fruit {
-    private static float weight;
+    private final float weight;
 
-    public static float getWeight() {
+    public Fruit(float weight) {
+        this.weight = weight;
+    }
+
+    public float getWeight() {
         return weight;
     }
 }
